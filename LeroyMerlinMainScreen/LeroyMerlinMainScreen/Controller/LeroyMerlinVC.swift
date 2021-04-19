@@ -7,30 +7,31 @@
 
 import UIKit
 
-class LeroyMerlinVC: UIViewController {
+class LeroyMerlinVC: UIViewController, UISearchBarDelegate {
     // MARK: - Property
     
     let searchController = UISearchController(searchResultsController: nil)
- 
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .green
-        setupNavigationController()
-        setupSearchBar()
-        setupCustomSearchBarItem()
+        searchController.searchBar.delegate = self
         setupAddSubview()
         setupStackViewConstraint()
         setupScrollViewConstraint()
+        setupNavigationController()
+        setupSearchBar()
+        setupCustomSearchBarItem()
+        
     }
     
-
-    // MARK: - Action
     
-    @objc func barButtonItemDidTapped() {
-        print(#function)
+    func updateSelectedState() {
+       
     }
+    
     
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -48,9 +49,9 @@ class LeroyMerlinVC: UIViewController {
     
     private func setupCustomSearchBarItem() {
         searchController.searchBar.setImage(UIImage(), for: .search, state: .normal)
-        searchController.searchBar.setImage(UIImage(systemName: "magnifyingglass"), for: .bookmark, state: .normal)
         searchController.searchBar.showsBookmarkButton = true
-     //   customBookmarkBtn()
+        searchController.searchBar.setImage(UIImage(systemName: "magnifyingglass"), for: .bookmark, state: .normal)
+        
         customCancelBtn()
     }
     
@@ -64,20 +65,7 @@ class LeroyMerlinVC: UIViewController {
         }
     }
     
-    private func customBookmarkBtn() {
-        searchController.searchBar.showsBookmarkButton = true
-        if let bookmarkButton = searchController.searchBar.value(forKey: "bookmarkButton") as? UIButton { // Error in "bookmark"
-            bookmarkButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-            bookmarkButton.setTitle("", for: .normal)
-            bookmarkButton.backgroundColor = .green
-            bookmarkButton.tintColor = .white
-            
-        }
-    }
-    
-    private func setupCustomNavigationControllerItem() {
-        
-    }
+    // MARK: - Setup Constraint
     
     private func setupAddSubview() {
       view.addSubview(LeroyMerlinMainView.scrollView)
@@ -104,7 +92,21 @@ class LeroyMerlinVC: UIViewController {
             LeroyMerlinMainView.stackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor),
             LeroyMerlinMainView.stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor)
         ])
+        
+        LeroyMerlinMainView.setupСatalogСollectionView()
     }
     
 }
 
+//extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        3
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        return UICollectionViewCell()
+//    }
+//    
+//    
+//}
