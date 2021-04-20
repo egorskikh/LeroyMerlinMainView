@@ -8,8 +8,39 @@
 import UIKit
 
 class LeroyMerlinVC: UIViewController {
-    // MARK: - Property
     
+    // MARK: - CatalogData
+    
+    fileprivate let catalogData = [ CustomDataCatalog(title: "Catalog",
+                                                      backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),
+                                                      systemImage: "list.bullet"),
+                                    CustomDataCatalog(title: "Garden",
+                                                      backgroundColor: .lightGray),
+                                    CustomDataCatalog(title: "Lighting",
+                                                      backgroundColor: .lightGray),
+                                    CustomDataCatalog(title: "Instruments",
+                                                      backgroundColor: .lightGray),
+                                    CustomDataCatalog(title: "Building materials",
+                                                      backgroundColor: .lightGray),
+                                    CustomDataCatalog(title: "Decor",
+                                                      backgroundColor: .lightGray)]
+    
+    //    fileprivate let limitData = [CustomDataCatalog(title: "Catalog", backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)),
+    //                                   CustomDataCatalog(title: "Garden", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Lighting", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Instruments", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Building materials", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Decor", backgroundColor: .lightGray),]
+    //
+    //    fileprivate let bestData = [CustomDataCatalog(title: "Catalog", backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)),
+    //                                   CustomDataCatalog(title: "Garden", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Lighting", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Instruments", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Building materials", backgroundColor: .lightGray),
+    //                                   CustomDataCatalog(title: "Decor", backgroundColor: .lightGray),]
+    
+    
+    // MARK: - Property
     let searchController = UISearchController(searchResultsController: nil)
     
     lazy var scrollView: UIScrollView = {
@@ -17,6 +48,9 @@ class LeroyMerlinVC: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .white
         scrollView.addSubview(stackView)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.alwaysBounceHorizontal = false
         return scrollView
     }()
     
@@ -39,8 +73,8 @@ class LeroyMerlinVC: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CatalogCell")
-        collectionView.backgroundColor = .blue
+        collectionView.register(CatalogCell.self, forCellWithReuseIdentifier: "CatalogCell")
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -57,7 +91,7 @@ class LeroyMerlinVC: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "LimitCell")
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .white // del leter
         return collectionView
     }()
     
@@ -74,7 +108,7 @@ class LeroyMerlinVC: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "BestCell")
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -83,7 +117,7 @@ class LeroyMerlinVC: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         setupAddSubview()
         setupStackViewConstraint()
@@ -91,15 +125,20 @@ class LeroyMerlinVC: UIViewController {
         setupNavigationController()
         setupSearchBar()
         setupCustomSearchBarItem()
-        setupCollectionsViews()
+        setupCollectionsViewsProtocols()
+        
+        
+        
     }
     
     
-    func setupCollectionsViews() {
+    func setupCollectionsViewsProtocols() {
         catalogСollectionView.dataSource = self
         catalogСollectionView.delegate = self
+        
         limitSaleСollectionView.dataSource = self
         limitSaleСollectionView.delegate = self
+        
         bestSaleСollectionView.dataSource = self
         bestSaleСollectionView.delegate = self
     }
@@ -134,6 +173,8 @@ class LeroyMerlinVC: UIViewController {
             cancelButton.setTitle("", for: .normal)
             cancelButton.backgroundColor = .white
             cancelButton.tintColor = .gray
+            cancelButton.clipsToBounds = true
+            cancelButton.layer.cornerRadius = 5
         }
     }
     
@@ -145,12 +186,12 @@ class LeroyMerlinVC: UIViewController {
     
     private func setupScrollViewConstraint() {
         let frameLayoutGuide = scrollView.frameLayoutGuide
-        
         NSLayoutConstraint.activate([
             frameLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             frameLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             frameLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            frameLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            frameLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            frameLayoutGuide.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
     
@@ -160,73 +201,85 @@ class LeroyMerlinVC: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor)
+            stackView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor, constant: 5),
+            stackView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor, constant: -5),
+            stackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor, constant: 5),
+            stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor, constant: 5)
         ])
-        
-        
     }
     
     private func setupСollectionViews() {
         NSLayoutConstraint.activate([
-            catalogСollectionView.heightAnchor.constraint(equalToConstant: view.frame.height / 2),
-            limitSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.height / 2),
-            bestSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.height / 2)
+            catalogСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
+            
+            limitSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
+            bestSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2)
         ])
         
     }
 }
 
-// MARK: - catalogСollectionView - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
 extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if collectionView == catalogСollectionView {
-            return 1
+            return catalogData.count
         }
-        
         if collectionView == limitSaleСollectionView {
-            return 2
+            return 6
         }
-        
-        if collectionView == bestSaleLbl {
-            return 3
+        if collectionView == bestSaleСollectionView {
+            return 7
         }
-        
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        // catalogСollectionView
         if collectionView == catalogСollectionView {
-            let catalogCell = catalogСollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath)
-            catalogCell.backgroundColor = .white
+            guard
+                let catalogCell = catalogСollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as? CatalogCell
+            else {
+                return UICollectionViewCell()
+            }
+            catalogCell.dataCatalog = self.catalogData[indexPath.item]
             return catalogCell
         }
         
+        // LimitSale СollectionView
         if collectionView == limitSaleСollectionView {
             let limitCell = limitSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "LimitCell", for: indexPath)
             limitCell.backgroundColor = .gray
             return limitCell
         }
         
+        // BestSale СollectionView
         if collectionView == bestSaleСollectionView {
-            let bestCell = limitSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "BestCell", for: indexPath)
+            let bestCell = bestSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "BestCell", for: indexPath)
             bestCell.backgroundColor = .blue
             return bestCell
         }
-        
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2.5, height: collectionView.frame.height / 2.5)
+        // Сatalog СollectionView
+        if collectionView == catalogСollectionView {
+            return CGSize(width: (catalogСollectionView.frame.width / 2.5), height: (catalogСollectionView.frame.width / 2.5))
+        }
+        // LimitSale СollectionView
+        if collectionView == limitSaleСollectionView {
+            return CGSize(width: limitSaleСollectionView.frame.width / 2.5, height: limitSaleСollectionView.frame.width / 2)
+        }
+        // BestSale СollectionView
+        if collectionView == bestSaleСollectionView {
+            return CGSize(width: bestSaleСollectionView.frame.width / 2.5, height: bestSaleСollectionView.frame.width / 2)
+        }
+        
+        return CGSize(width: 0, height: 0)
     }
-    
     
 }
 
