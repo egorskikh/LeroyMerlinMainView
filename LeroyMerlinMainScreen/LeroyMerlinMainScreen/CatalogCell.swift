@@ -16,7 +16,6 @@ class CatalogCell: UICollectionViewCell {
             label.text = data.title
             image.tintColor = .white
             image.image = data.systemImage
-            
         }
     }
     

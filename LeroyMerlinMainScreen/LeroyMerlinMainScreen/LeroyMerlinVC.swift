@@ -11,33 +11,32 @@ class LeroyMerlinVC: UIViewController {
     
     // MARK: - CatalogData
     
-    fileprivate let catalogData = [ CustomDataCatalog(title: "Catalog",
-                                                      backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),
+    fileprivate let catalogData = [ CustomDataCatalog(title: "Catalog", backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),
                                                       systemImage: "list.bullet"),
-                                    CustomDataCatalog(title: "Garden",
-                                                      backgroundColor: .lightGray),
-                                    CustomDataCatalog(title: "Lighting",
-                                                      backgroundColor: .lightGray),
-                                    CustomDataCatalog(title: "Instruments",
-                                                      backgroundColor: .lightGray),
-                                    CustomDataCatalog(title: "Building materials",
-                                                      backgroundColor: .lightGray),
-                                    CustomDataCatalog(title: "Decor",
-                                                      backgroundColor: .lightGray)]
+                                    CustomDataCatalog(title: "Garden", backgroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)),
+                                    CustomDataCatalog(title: "Lighting", backgroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)),
+                                    CustomDataCatalog(title: "Instruments", backgroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)),
+                                    CustomDataCatalog(title: "Building materials", backgroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)),
+                                    CustomDataCatalog(title: "Decor", backgroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))]
     
-    //    fileprivate let limitData = [CustomDataCatalog(title: "Catalog", backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)),
-    //                                   CustomDataCatalog(title: "Garden", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Lighting", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Instruments", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Building materials", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Decor", backgroundColor: .lightGray),]
-    //
-    //    fileprivate let bestData = [CustomDataCatalog(title: "Catalog", backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)),
-    //                                   CustomDataCatalog(title: "Garden", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Lighting", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Instruments", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Building materials", backgroundColor: .lightGray),
-    //                                   CustomDataCatalog(title: "Decor", backgroundColor: .lightGray),]
+    fileprivate let limitData = [CustomDataLimit(imageView: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1), titleName: "Saw", titleSale: "5,45$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1), titleName: "Hammer", titleSale: "4,41$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), titleName: "Stucco", titleSale: "5,45$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), titleName: "Drywall", titleSale: "15,44$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), titleName: "Paint", titleSale: "10,00$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), titleName: "Concrete", titleSale: "3,44$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1), titleName: "Bucket", titleSale: "2,50$"),
+                                 CustomDataLimit(imageView: #colorLiteral(red: 0.4922404289, green: 0.7722371817, blue: 0.4631441236, alpha: 1), titleName: "Rake", titleSale: "3,00$")]
+    
+    fileprivate let bestData = [CustomDataBest(imageView: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), titleName: "Saw", titleSale: "5,45$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), titleName: "Hammer", titleSale: "4,41$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 0.7464011312, green: 0.8857318759, blue: 0.7402122021, alpha: 1), titleName: "Stucco", titleSale: "5,45$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), titleName: "Drywall", titleSale: "15,44$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), titleName: "Paint", titleSale: "10,00$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), titleName: "Concrete", titleSale: "3,44$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 0.4922404289, green: 0.7722371817, blue: 0.4631441236, alpha: 1), titleName: "Bucket", titleSale: "2,50$"),
+                                CustomDataBest(imageView: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), titleName: "Rake", titleSale: "3,00$")]
+    
     
     
     // MARK: - Property
@@ -90,7 +89,7 @@ class LeroyMerlinVC: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "LimitCell")
+        collectionView.register(LimitCell.self, forCellWithReuseIdentifier: "LimitCell")
         collectionView.backgroundColor = .white // del leter
         return collectionView
     }()
@@ -107,7 +106,7 @@ class LeroyMerlinVC: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "BestCell")
+        collectionView.register(BestCell.self, forCellWithReuseIdentifier: "BestCell")
         collectionView.backgroundColor = .white
         return collectionView
     }()
@@ -125,10 +124,7 @@ class LeroyMerlinVC: UIViewController {
         setupNavigationController()
         setupSearchBar()
         setupCustomSearchBarItem()
-        setupCollectionsViewsProtocols()
-        
-        
-        
+        setupCollectionsViewsProtocols()     
     }
     
     
@@ -211,7 +207,6 @@ class LeroyMerlinVC: UIViewController {
     private func setupСollectionViews() {
         NSLayoutConstraint.activate([
             catalogСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
-            
             limitSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
             bestSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2)
         ])
@@ -228,10 +223,10 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
             return catalogData.count
         }
         if collectionView == limitSaleСollectionView {
-            return 6
+            return limitData.count
         }
         if collectionView == bestSaleСollectionView {
-            return 7
+            return bestData.count
         }
         return 0
     }
@@ -248,17 +243,25 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
             return catalogCell
         }
         
-        // LimitSale СollectionView
+        // limitSaleСollectionView
         if collectionView == limitSaleСollectionView {
-            let limitCell = limitSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "LimitCell", for: indexPath)
-            limitCell.backgroundColor = .gray
+            guard
+                let limitCell = limitSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "LimitCell", for: indexPath) as? LimitCell
+            else {
+                return UICollectionViewCell()
+            }
+            limitCell.dataLimit = self.limitData[indexPath.item]
             return limitCell
         }
         
         // BestSale СollectionView
         if collectionView == bestSaleСollectionView {
-            let bestCell = bestSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "BestCell", for: indexPath)
-            bestCell.backgroundColor = .blue
+            guard
+                let bestCell = bestSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "BestCell", for: indexPath) as? BestCell
+            else {
+                return UICollectionViewCell()
+            }
+            bestCell.dataBest = self.bestData[indexPath.item]
             return bestCell
         }
         return UICollectionViewCell()
@@ -271,13 +274,14 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         }
         // LimitSale СollectionView
         if collectionView == limitSaleСollectionView {
-            return CGSize(width: limitSaleСollectionView.frame.width / 2.5, height: limitSaleСollectionView.frame.width / 2)
+            return CGSize(width: limitSaleСollectionView.frame.width / 2.5,
+                          height: limitSaleСollectionView.frame.width / 2)
         }
         // BestSale СollectionView
         if collectionView == bestSaleСollectionView {
-            return CGSize(width: bestSaleСollectionView.frame.width / 2.5, height: bestSaleСollectionView.frame.width / 2)
+            return CGSize(width: bestSaleСollectionView.frame.width / 2.5,
+                          height: bestSaleСollectionView.frame.width / 2)
         }
-        
         return CGSize(width: 0, height: 0)
     }
     
