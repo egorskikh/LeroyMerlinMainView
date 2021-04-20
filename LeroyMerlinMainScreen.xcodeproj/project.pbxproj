@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B446311262BA56A001ED756 /* LeroyMerlinMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B446310262BA56A001ED756 /* LeroyMerlinMainView.swift */; };
+		7B446311262BA56A001ED756 /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B446310262BA56A001ED756 /* CatalogCell.swift */; };
 		7B702894262BA9E9006AA412 /* TitleTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B702893262BA9E9006AA412 /* TitleTabBar.swift */; };
 		7B702898262BAA74006AA412 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B702897262BAA74006AA412 /* TabBarVC.swift */; };
 		7B70289E262BAB0E006AA412 /* TabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B70289D262BAB0E006AA412 /* TabBarExtension.swift */; };
@@ -17,10 +17,12 @@
 		7BC6471F262BA05900D7AB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC6471D262BA05900D7AB36 /* Main.storyboard */; };
 		7BC64721262BA05E00D7AB36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC64720262BA05E00D7AB36 /* Assets.xcassets */; };
 		7BC64724262BA05E00D7AB36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC64722262BA05E00D7AB36 /* LaunchScreen.storyboard */; };
+		7BEA54C5262E553700C295C0 /* BestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA54C4262E553700C295C0 /* BestCell.swift */; };
+		7BEA54C8262E555600C295C0 /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA54C7262E555600C295C0 /* LimitCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7B446310262BA56A001ED756 /* LeroyMerlinMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeroyMerlinMainView.swift; sourceTree = "<group>"; };
+		7B446310262BA56A001ED756 /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		7B702893262BA9E9006AA412 /* TitleTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTabBar.swift; sourceTree = "<group>"; };
 		7B702897262BAA74006AA412 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		7B70289D262BAB0E006AA412 /* TabBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarExtension.swift; sourceTree = "<group>"; };
@@ -32,6 +34,8 @@
 		7BC64720262BA05E00D7AB36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BC64723262BA05E00D7AB36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BC64725262BA05E00D7AB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BEA54C4262E553700C295C0 /* BestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCell.swift; sourceTree = "<group>"; };
+		7BEA54C7262E555600C295C0 /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,9 @@
 		7B44630F262BA524001ED756 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7B446310262BA56A001ED756 /* LeroyMerlinMainView.swift */,
+				7B446310262BA56A001ED756 /* CatalogCell.swift */,
+				7BEA54C7262E555600C295C0 /* LimitCell.swift */,
+				7BEA54C4262E553700C295C0 /* BestCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,12 +244,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B702898262BAA74006AA412 /* TabBarVC.swift in Sources */,
+				7BEA54C8262E555600C295C0 /* LimitCell.swift in Sources */,
 				7B702894262BA9E9006AA412 /* TitleTabBar.swift in Sources */,
 				7BC6471C262BA05900D7AB36 /* LeroyMerlinVC.swift in Sources */,
 				7BC64718262BA05900D7AB36 /* AppDelegate.swift in Sources */,
 				7B70289E262BAB0E006AA412 /* TabBarExtension.swift in Sources */,
-				7B446311262BA56A001ED756 /* LeroyMerlinMainView.swift in Sources */,
+				7B446311262BA56A001ED756 /* CatalogCell.swift in Sources */,
 				7BC6471A262BA05900D7AB36 /* SceneDelegate.swift in Sources */,
+				7BEA54C5262E553700C295C0 /* BestCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
