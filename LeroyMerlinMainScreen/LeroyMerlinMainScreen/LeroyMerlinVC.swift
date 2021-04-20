@@ -79,7 +79,9 @@ class LeroyMerlinVC: UIViewController {
     
     lazy var limitSaleLbl: UILabel = {
         let label = UILabel()
-        label.text = "Limit sale"
+        label.attributedText =
+            NSMutableAttributedString()
+                .bold("Limit sale")
         label.textAlignment = .left
         return label
     }()
@@ -96,7 +98,9 @@ class LeroyMerlinVC: UIViewController {
     
     lazy var bestSaleLbl: UILabel = {
         let label = UILabel()
-        label.text = "Best sale"
+        label.attributedText =
+            NSMutableAttributedString()
+                .bold("Best sale")
         label.textAlignment = .left
         return label
     }()

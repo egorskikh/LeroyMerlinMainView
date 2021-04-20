@@ -41,7 +41,6 @@ class BestCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         label.textAlignment = .left
-
         return label
     }()
     

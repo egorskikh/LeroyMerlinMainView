@@ -20,6 +20,7 @@
 		7BC6471F262BA05900D7AB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC6471D262BA05900D7AB36 /* Main.storyboard */; };
 		7BC64721262BA05E00D7AB36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC64720262BA05E00D7AB36 /* Assets.xcassets */; };
 		7BC64724262BA05E00D7AB36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC64722262BA05E00D7AB36 /* LaunchScreen.storyboard */; };
+		7BDCBF30262F82D200936511 /* NSMutableAttributedString Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDCBF2F262F82D200936511 /* NSMutableAttributedString Ext.swift */; };
 		7BEA54C5262E553700C295C0 /* BestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA54C4262E553700C295C0 /* BestCell.swift */; };
 		7BEA54C8262E555600C295C0 /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA54C7262E555600C295C0 /* LimitCell.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		7BC64720262BA05E00D7AB36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BC64723262BA05E00D7AB36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BC64725262BA05E00D7AB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BDCBF2F262F82D200936511 /* NSMutableAttributedString Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString Ext.swift"; sourceTree = "<group>"; };
 		7BEA54C4262E553700C295C0 /* BestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCell.swift; sourceTree = "<group>"; };
 		7BEA54C7262E555600C295C0 /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 		7BC6472C262BA07300D7AB36 /* LeroyMerlinMainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7BDCBF2F262F82D200936511 /* NSMutableAttributedString Ext.swift */,
 				7B446310262BA56A001ED756 /* CatalogCell.swift */,
 				7BEA54C7262E555600C295C0 /* LimitCell.swift */,
 				7BEA54C4262E553700C295C0 /* BestCell.swift */,
@@ -245,6 +248,7 @@
 				7B70289E262BAB0E006AA412 /* TabBarExtension.swift in Sources */,
 				7B32D9E9262F211E003E8C3C /* CustomDataCatalog.swift in Sources */,
 				7B446311262BA56A001ED756 /* CatalogCell.swift in Sources */,
+				7BDCBF30262F82D200936511 /* NSMutableAttributedString Ext.swift in Sources */,
 				7BC6471A262BA05900D7AB36 /* SceneDelegate.swift in Sources */,
 				7B4E2E4E262F3C980023C1D6 /* CustomDataBest.swift in Sources */,
 				7BEA54C5262E553700C295C0 /* BestCell.swift in Sources */,
