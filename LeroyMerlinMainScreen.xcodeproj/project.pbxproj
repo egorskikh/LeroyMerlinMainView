@@ -62,6 +62,7 @@
 		7B446305262BA3BE001ED756 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7BDCBF33262FA34900936511 /* Extension */,
 				7B446307262BA3C9001ED756 /* Resource */,
 				7B44630B262BA40E001ED756 /* Delegates */,
 				7B446309262BA3ED001ED756 /* Storyboards */,
@@ -162,7 +163,6 @@
 				7BDCBF36262FA37400936511 /* Controller */,
 				7BDCBF34262FA35800936511 /* View */,
 				7BDCBF35262FA36500936511 /* Models */,
-				7BDCBF33262FA34900936511 /* Extension */,
 			);
 			path = LeroyMerlinMainScreen;
 			sourceTree = "<group>";
