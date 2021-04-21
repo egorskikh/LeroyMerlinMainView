@@ -21,6 +21,7 @@
 		7BC64721262BA05E00D7AB36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC64720262BA05E00D7AB36 /* Assets.xcassets */; };
 		7BC64724262BA05E00D7AB36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC64722262BA05E00D7AB36 /* LaunchScreen.storyboard */; };
 		7BDCBF30262F82D200936511 /* NSMutableAttributedString Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDCBF2F262F82D200936511 /* NSMutableAttributedString Ext.swift */; };
+		7BDCBF3B262FA52D00936511 /* LeroyMerlinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDCBF3A262FA52D00936511 /* LeroyMerlinView.swift */; };
 		7BEA54C5262E553700C295C0 /* BestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA54C4262E553700C295C0 /* BestCell.swift */; };
 		7BEA54C8262E555600C295C0 /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA54C7262E555600C295C0 /* LimitCell.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		7BC64723262BA05E00D7AB36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BC64725262BA05E00D7AB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BDCBF2F262F82D200936511 /* NSMutableAttributedString Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString Ext.swift"; sourceTree = "<group>"; };
+		7BDCBF3A262FA52D00936511 /* LeroyMerlinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeroyMerlinView.swift; sourceTree = "<group>"; };
 		7BEA54C4262E553700C295C0 /* BestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCell.swift; sourceTree = "<group>"; };
 		7BEA54C7262E555600C295C0 /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,16 +159,65 @@
 		7BC6472C262BA07300D7AB36 /* LeroyMerlinMainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7BDCBF36262FA37400936511 /* Controller */,
+				7BDCBF34262FA35800936511 /* View */,
+				7BDCBF35262FA36500936511 /* Models */,
+				7BDCBF33262FA34900936511 /* Extension */,
+			);
+			path = LeroyMerlinMainScreen;
+			sourceTree = "<group>";
+		};
+		7BDCBF33262FA34900936511 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
 				7BDCBF2F262F82D200936511 /* NSMutableAttributedString Ext.swift */,
-				7B446310262BA56A001ED756 /* CatalogCell.swift */,
-				7BEA54C7262E555600C295C0 /* LimitCell.swift */,
-				7BEA54C4262E553700C295C0 /* BestCell.swift */,
-				7BC6471B262BA05900D7AB36 /* LeroyMerlinVC.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7BDCBF34262FA35800936511 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BDCBF39262FA4EE00936511 /* LeroyMerlinView */,
+				7BDCBF38262FA4CC00936511 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BDCBF35262FA36500936511 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				7B32D9E8262F211E003E8C3C /* CustomDataCatalog.swift */,
 				7B4E2E4A262F3C7C0023C1D6 /* CustomDataLimit.swift */,
 				7B4E2E4D262F3C980023C1D6 /* CustomDataBest.swift */,
 			);
-			path = LeroyMerlinMainScreen;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7BDCBF36262FA37400936511 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BC6471B262BA05900D7AB36 /* LeroyMerlinVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BDCBF38262FA4CC00936511 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7B446310262BA56A001ED756 /* CatalogCell.swift */,
+				7BEA54C7262E555600C295C0 /* LimitCell.swift */,
+				7BEA54C4262E553700C295C0 /* BestCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7BDCBF39262FA4EE00936511 /* LeroyMerlinView */ = {
+			isa = PBXGroup;
+			children = (
+				7BDCBF3A262FA52D00936511 /* LeroyMerlinView.swift */,
+			);
+			path = LeroyMerlinView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +293,7 @@
 				7B702898262BAA74006AA412 /* TabBarVC.swift in Sources */,
 				7B4E2E4B262F3C7C0023C1D6 /* CustomDataLimit.swift in Sources */,
 				7BEA54C8262E555600C295C0 /* LimitCell.swift in Sources */,
+				7BDCBF3B262FA52D00936511 /* LeroyMerlinView.swift in Sources */,
 				7B702894262BA9E9006AA412 /* TitleTabBar.swift in Sources */,
 				7BC6471C262BA05900D7AB36 /* LeroyMerlinVC.swift in Sources */,
 				7BC64718262BA05900D7AB36 /* AppDelegate.swift in Sources */,

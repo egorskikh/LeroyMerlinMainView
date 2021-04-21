@@ -7,13 +7,14 @@
 
 import UIKit
 
-class LimitCell: UICollectionViewCell {
+final class LimitCell: UICollectionViewCell {
     
     var dataLimit: CustomDataLimit? {
         didSet {
             guard let data = dataLimit  else { return }
             imageView.backgroundColor = data.imageView
-            saleLabel.text = data.titleSale
+            saleLabel.attributedText = NSMutableAttributedString().bold(data.titleSale)
+            //saleLabel.text = data.titleSale
             nameLabel.text = data.titleName
         }
     }
@@ -40,7 +41,7 @@ class LimitCell: UICollectionViewCell {
     fileprivate var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-  //      label.numberOfLines = 2
+        label.numberOfLines = 2
         label.textAlignment = .left
         return label
     }()
@@ -58,14 +59,14 @@ class LimitCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupAddSubview() {
+    private func setupAddSubview() {
         contentView.addSubview(view)
         view.addSubview(imageView)
         view.addSubview(saleLabel)
         view.addSubview(nameLabel)
     }
     
-    func setupCellConstraint() {
+    private func setupCellConstraint() {
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: contentView.topAnchor),
             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -74,7 +75,7 @@ class LimitCell: UICollectionViewCell {
         ])
     }
     
-    func setupImageViewConstraint() {
+    private func setupImageViewConstraint() {
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 100),
             
@@ -84,7 +85,7 @@ class LimitCell: UICollectionViewCell {
         ])
     }
     
-    func setupLabelSaleConstraint() {
+    private func setupLabelSaleConstraint() {
         NSLayoutConstraint.activate([
             saleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant:5),
             saleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
@@ -92,13 +93,12 @@ class LimitCell: UICollectionViewCell {
         ])
     }
     
-    func setupLabelNameConstraint() {
+    private func setupLabelNameConstraint() {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: saleLabel.bottomAnchor, constant: 5),
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 5),
         ])
     }
-    
     
 }

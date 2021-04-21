@@ -12,7 +12,7 @@ class BestCell: UICollectionViewCell {
         didSet {
             guard let data = dataBest  else { return }
             imageView.backgroundColor = data.imageView
-            saleLabel.text = data.titleSale
+            saleLabel.attributedText = NSMutableAttributedString().bold(data.titleSale)
             nameLabel.text = data.titleName
         }
     }
@@ -98,6 +98,5 @@ class BestCell: UICollectionViewCell {
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 5),
         ])
     }
-    
     
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CatalogCell: UICollectionViewCell {
+final class CatalogCell: UICollectionViewCell {
     
     var dataCatalog: CustomDataCatalog? {
         didSet {
@@ -53,13 +53,13 @@ class CatalogCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupAddSubview() {
+    private func setupAddSubview() {
         contentView.addSubview(view)
         view.addSubview(label)
         view.addSubview(image)
     }
     
-    func setupCellConstraint(){
+    private func setupCellConstraint(){
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: contentView.topAnchor),
             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -68,7 +68,7 @@ class CatalogCell: UICollectionViewCell {
         ])
     }
     
-    func setupLabelConstraint() {
+    private func setupLabelConstraint() {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -76,7 +76,7 @@ class CatalogCell: UICollectionViewCell {
         ])
     }
     
-    func setupImageViewConstraint() {
+    private func setupImageViewConstraint() {
         NSLayoutConstraint.activate([
             image.heightAnchor.constraint(equalToConstant: 50),
             image.widthAnchor.constraint(equalToConstant: 50),

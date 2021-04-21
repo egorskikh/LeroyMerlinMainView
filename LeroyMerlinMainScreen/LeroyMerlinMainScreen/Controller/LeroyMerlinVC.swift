@@ -7,9 +7,9 @@
 
 import UIKit
 
-class LeroyMerlinVC: UIViewController {
+final class LeroyMerlinVC: UIViewController {
     
-    // MARK: - CatalogData
+    // MARK: - Data
     
     fileprivate let catalogData = [ CustomDataCatalog(title: "Catalog", backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),
                                                       systemImage: "list.bullet"),
@@ -37,90 +37,15 @@ class LeroyMerlinVC: UIViewController {
                                 CustomDataBest(imageView: #colorLiteral(red: 0.4922404289, green: 0.7722371817, blue: 0.4631441236, alpha: 1), titleName: "Bucket", titleSale: "2,50$"),
                                 CustomDataBest(imageView: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), titleName: "Rake", titleSale: "3,00$")]
     
-    
-    
     // MARK: - Property
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .white
-        scrollView.addSubview(stackView)
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.alwaysBounceHorizontal = false
-        return scrollView
-    }()
-    
-    lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [ catalogСollectionView,
-                                                        limitSaleLbl,
-                                                        limitSaleСollectionView,
-                                                        bestSaleLbl,
-                                                        bestSaleСollectionView
-        ])
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 10
-        return stackView
-    }()
-    
-    lazy var catalogСollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(CatalogCell.self, forCellWithReuseIdentifier: "CatalogCell")
-        collectionView.backgroundColor = .white
-        return collectionView
-    }()
-    
-    lazy var limitSaleLbl: UILabel = {
-        let label = UILabel()
-        label.attributedText =
-            NSMutableAttributedString()
-                .bold("Limit sale")
-        label.textAlignment = .left
-        return label
-    }()
-    
-    lazy var limitSaleСollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(LimitCell.self, forCellWithReuseIdentifier: "LimitCell")
-        collectionView.backgroundColor = .white // del leter
-        return collectionView
-    }()
-    
-    lazy var bestSaleLbl: UILabel = {
-        let label = UILabel()
-        label.attributedText =
-            NSMutableAttributedString()
-                .bold("Best sale")
-        label.textAlignment = .left
-        return label
-    }()
-    
-    lazy var bestSaleСollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(BestCell.self, forCellWithReuseIdentifier: "BestCell")
-        collectionView.backgroundColor = .white
-        return collectionView
-    }()
-    
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let lmv = LeroyMerlinView()
     
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.view.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         setupAddSubview()
         setupStackViewConstraint()
@@ -132,15 +57,15 @@ class LeroyMerlinVC: UIViewController {
     }
     
     
-    func setupCollectionsViewsProtocols() {
-        catalogСollectionView.dataSource = self
-        catalogСollectionView.delegate = self
+    private func setupCollectionsViewsProtocols() {
+        lmv.catalogСollectionView.dataSource = self
+        lmv.catalogСollectionView.delegate = self
         
-        limitSaleСollectionView.dataSource = self
-        limitSaleСollectionView.delegate = self
+        lmv.limitSaleСollectionView.dataSource = self
+        lmv.limitSaleСollectionView.delegate = self
         
-        bestSaleСollectionView.dataSource = self
-        bestSaleСollectionView.delegate = self
+        lmv.bestSaleСollectionView.dataSource = self
+        lmv.bestSaleСollectionView.delegate = self
     }
     
     
@@ -181,38 +106,39 @@ class LeroyMerlinVC: UIViewController {
     // MARK: - Setup Constraint
     
     private func setupAddSubview() {
-        view.addSubview(scrollView)
+        view.addSubview(lmv.scrollView)
     }
     
     private func setupScrollViewConstraint() {
-        let frameLayoutGuide = scrollView.frameLayoutGuide
+        let frameLayoutGuide = lmv.scrollView.frameLayoutGuide
         NSLayoutConstraint.activate([
             frameLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             frameLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             frameLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             frameLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            frameLayoutGuide.widthAnchor.constraint(equalTo: view.widthAnchor)
+            
         ])
     }
     
     private func setupStackViewConstraint() {
         setupСollectionViews()
-        let contentLayoutGuide = scrollView.contentLayoutGuide
+        let contentLayoutGuide = lmv.scrollView.contentLayoutGuide
         
         NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor, constant: 5),
-            stackView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor, constant: -5),
-            stackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor, constant: 5),
-            stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor, constant: 5)
+            lmv.stackView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor, constant: 5),
+            lmv.stackView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor, constant: -5),
+            lmv.stackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor, constant: 5),
+            lmv.stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor, constant: 5),
+            lmv.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        
         ])
     }
     
     private func setupСollectionViews() {
         NSLayoutConstraint.activate([
-            catalogСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
-            limitSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
-            bestSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2)
+            lmv.catalogСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
+            lmv.limitSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2),
+            lmv.bestSaleСollectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 2)
         ])
         
     }
@@ -223,13 +149,13 @@ class LeroyMerlinVC: UIViewController {
 extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == catalogСollectionView {
+        if collectionView == lmv.catalogСollectionView {
             return catalogData.count
         }
-        if collectionView == limitSaleСollectionView {
+        if collectionView == lmv.limitSaleСollectionView {
             return limitData.count
         }
-        if collectionView == bestSaleСollectionView {
+        if collectionView == lmv.bestSaleСollectionView {
             return bestData.count
         }
         return 0
@@ -237,9 +163,9 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // catalogСollectionView
-        if collectionView == catalogСollectionView {
+        if collectionView == lmv.catalogСollectionView {
             guard
-                let catalogCell = catalogСollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as? CatalogCell
+                let catalogCell = lmv.catalogСollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as? CatalogCell
             else {
                 return UICollectionViewCell()
             }
@@ -248,9 +174,9 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         }
         
         // limitSaleСollectionView
-        if collectionView == limitSaleСollectionView {
+        if collectionView == lmv.limitSaleСollectionView {
             guard
-                let limitCell = limitSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "LimitCell", for: indexPath) as? LimitCell
+                let limitCell = lmv.limitSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "LimitCell", for: indexPath) as? LimitCell
             else {
                 return UICollectionViewCell()
             }
@@ -259,9 +185,9 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         }
         
         // BestSale СollectionView
-        if collectionView == bestSaleСollectionView {
+        if collectionView == lmv.bestSaleСollectionView {
             guard
-                let bestCell = bestSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "BestCell", for: indexPath) as? BestCell
+                let bestCell = lmv.bestSaleСollectionView.dequeueReusableCell(withReuseIdentifier: "BestCell", for: indexPath) as? BestCell
             else {
                 return UICollectionViewCell()
             }
@@ -273,18 +199,18 @@ extension LeroyMerlinVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Сatalog СollectionView
-        if collectionView == catalogСollectionView {
-            return CGSize(width: (catalogСollectionView.frame.width / 2.5), height: (catalogСollectionView.frame.width / 2.5))
+        if collectionView == lmv.catalogСollectionView {
+            return CGSize(width: (lmv.catalogСollectionView.frame.width / 2.5), height: (lmv.catalogСollectionView.frame.width / 2.5))
         }
         // LimitSale СollectionView
-        if collectionView == limitSaleСollectionView {
-            return CGSize(width: limitSaleСollectionView.frame.width / 2.5,
-                          height: limitSaleСollectionView.frame.width / 2)
+        if collectionView == lmv.limitSaleСollectionView {
+            return CGSize(width: lmv.limitSaleСollectionView.frame.width / 2.5,
+                          height: lmv.limitSaleСollectionView.frame.width / 2)
         }
         // BestSale СollectionView
-        if collectionView == bestSaleСollectionView {
-            return CGSize(width: bestSaleСollectionView.frame.width / 2.5,
-                          height: bestSaleСollectionView.frame.width / 2)
+        if collectionView == lmv.bestSaleСollectionView {
+            return CGSize(width: lmv.bestSaleСollectionView.frame.width / 2.5,
+                          height: lmv.bestSaleСollectionView.frame.width / 2)
         }
         return CGSize(width: 0, height: 0)
     }
