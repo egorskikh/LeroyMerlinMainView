@@ -128,7 +128,7 @@ final class LeroyMerlinVC: UIViewController {
             lmv.stackView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor, constant: 5),
             lmv.stackView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor, constant: -5),
             lmv.stackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor, constant: 5),
-            lmv.stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor, constant: 5),
+            lmv.stackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor, constant: -5),
             lmv.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         
         ])
