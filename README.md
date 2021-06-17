@@ -1,4 +1,4 @@
-# LeroyMerlinMainView
+# MainView
 ## Stack:
 *  MVC
 *  UIKit
